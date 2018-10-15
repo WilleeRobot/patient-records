@@ -1,5 +1,13 @@
 <h1>Signup</h1>
 
+<%if @user && @user.errors.any?%>
+    <ul>
+        <%@user.errors.full_messages.each do |message|%>
+            <li><%=message%></li>
+        <%end%>
+    </ul>
+<%end%>
+
 <form action="/users" method="POST">
     
     <!--CREATE USERNAME-->    
