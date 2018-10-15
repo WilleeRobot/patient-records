@@ -29,12 +29,10 @@ class PatientsController < ApplicationController
                 @user = current_user
                 erb :"/patients/unique_show.html"
             else
-                @message = "No such patient under your username."
-                redirect '/'
+                redirect "/patients"
             end
         else
-            @message = "You are not logged in."
-            redirect to '/'
+            redirect "/patients"
         end
 
     end
