@@ -80,4 +80,10 @@ class PatientsController < ApplicationController
 
         redirect "/patients/#{@patient.id}"
     end
+
+    delete '/patients/:id/delete' do
+        @patient = current_user.patients.find_by(id: params[:id])
+        @patient.delete
+        redirect '/patients'
+    end
 end

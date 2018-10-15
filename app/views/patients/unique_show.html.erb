@@ -36,10 +36,18 @@ tr:nth-child(even) {
         <td><%=@patient.history%></td>
         <td>
             <a href="/patients/<%=@patient.id%>/edit">Edit</a><br>
-            <a href="/patients/<%=@patient.id%>/delete">Delete</a>
         </td>
     </tr>
 </table>
+<br>
+<br>
+
+
+<form action="/patients/<%= @patient.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="DELETE PATIENT RECORD">
+</form>
+
 <br>
 <!--CREATE NAV LINKS -->
 <a href="/patients">Back to patient list</a>
