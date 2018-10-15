@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        "Homepage!"
+        redirect '/patients'
     end
 
     helpers do
@@ -20,13 +20,11 @@ class ApplicationController < Sinatra::Base
         end
 
         def login(username, password)
-            #check to see if user with username exist.  If found set session, if not redirect to login
+            #check to see if user with username exist.  If found then set session, if not redirect to login
             user = User.find_by(:username=>username)
             
             if user && user.authenticate(password)
                 session[:username] = user.username
-            else
-                redirect '/login'
             end
         end
 
