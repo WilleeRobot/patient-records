@@ -1,0 +1,26 @@
+<h1>New Patient Form</h1>
+
+<%if @user && @user.errors.any?%>
+    <ul>
+        <%@user.errors.full_messages.each do |message|%>
+            <li><%=message%></li>
+        <%end%>
+    </ul>
+<%end%>
+
+<form action="/patients" method="POST" id="patientform">
+    <p>
+        <label for="name">Patient Name:</label>
+        <input type="text" name="name" id="name">
+    </p>
+    <p>
+        <label for="birth_year">Birth Year:</label>
+        <input type="text" name="birth_year" id="birth_year">
+    </p>
+    <input type="submit">
+</form>
+<textarea placeholder="Enter patient history." rows="4" cols="50" name="history" form="patientform"></textarea>
+<br>
+<a href="/">Back to homepage</a>
+<br>
+<a href="/login">Click here to login with an existing account.</a>
