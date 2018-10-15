@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
         @patient.birth_year = params[:birth_year].to_i
         @patient.history = params[:history]
         @patient.user = User.find_by(id: current_user.id)
-        binding.pry
+
         if @patient.save
             redirect "/patients/#{@patient.id}"
         else
@@ -61,12 +61,25 @@ class PatientsController < ApplicationController
             redirect "/login"
         else
             #Ensure only logged in user is allowed to edit => USER OBJECT
-            
-            if patient = current_user.patients.find_by(params[:id])
-                "User ID #{current_user.id} is editing patient ID #{patient.id}"
+            @patient = current_user.patients.find_by(id: params[:id].to_i)
+
+            if @patient        
+                
+                erb :"/patients/edit.html"
             else
                 redirect '/patients'
             end
         end
+    end
+
+    patch '/patients/:id/edit' do
+        @patient = current_user.patients.find_by(id: params[:id])
+
+        @patient.name = params[:name] if !params[:name].empty?
+        @patient.birth_year = params[:birth_year].to_i if !params[:birth_year].empty?
+        @patient.history = params[:history] if !params[:history].empty?
+        @patient.save
+
+        redirect "/patients/#{@patient.id}"
     end
 end
