@@ -18,7 +18,7 @@ class PatientsController < ApplicationController
         if !logged_in?
             redirect "/login"
         else
-            "Create a new patient record form"
+            erb :"/patients/new.html"
         end
     end
 

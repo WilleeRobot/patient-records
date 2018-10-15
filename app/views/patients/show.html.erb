@@ -28,6 +28,7 @@ tr:nth-child(even) {
     <th>Patient Name</th>
     <th>Birth Year</th>
     <th>History</th>
+    <th>Action</th>
   </tr>
 
   <%@patients.each do |patient|%>
@@ -35,6 +36,10 @@ tr:nth-child(even) {
         <td><%=patient.name%></td>
         <td><%=patient.birth_year%></td>
         <td><%=patient.history%></td>
+        <td>
+          <a href="/patient/<%=patient.id%>/edit">Edit</a><br>
+          <a href="/patient/<%=patient.id%>/delete">Delete</a>
+        </td>
     </tr>
   <%end%>
 </table>
