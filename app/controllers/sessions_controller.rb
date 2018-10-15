@@ -7,7 +7,12 @@ class SessionsController < ApplicationController
     post '/sessions' do
         login(params[:username], params[:password])
 
-        redirect "/patients"
+        if logged_in?
+            redirect "/patients"
+        else
+            @message = "Incorrect username or password."
+            erb :"sessions/login.html"
+        end
     end
 
     get '/logout' do
