@@ -26,6 +26,9 @@ tr:nth-child(even) {
     <tr>
         <th>Patient Name</th>
         <th>Birth Year</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Health Care Number</th>
         <th>History</th>
         <th>Action</th>
     </tr>
@@ -33,6 +36,9 @@ tr:nth-child(even) {
     <tr>
         <td><%=@patient.name%></td>
         <td><%=@patient.birth_year%></td>
+        <td><%=@patient.phone%></td>
+        <td><%=@patient.address%></td>
+        <td><%=@patient.healthcarenumber%></td>
         <td><%=@patient.history%></td>
         <td>
             <a href="/patients/<%=@patient.id%>/edit">Edit</a><br>
