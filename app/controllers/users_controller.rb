@@ -7,8 +7,11 @@ class UsersController < ApplicationController
         @user = User.new
         @user.username = params[:username]
         @user.password = params[:password]
-        if @user.save
-            redirect '/login'
+
+        if @user.valid?
+            @user.save
+            login(params[:username], params[:password])
+            redirect '/patients'
         else
             erb :"users/new.html"
         end
