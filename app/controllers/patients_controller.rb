@@ -1,6 +1,16 @@
 class PatientsController < ApplicationController
     get '/patients' do
-        "Show list of patients"
+        #check to see if logged in
+        if logged_in?
+            @user = current_user
+            @patients = @user.patients.all
+
+            erb :"/patients/show.html"
+        else
+            @users = User.all
+            @patients = Patient.all
+            erb :"/patients/summary.html"
+        end
     end
 
     get '/patients/new' do
