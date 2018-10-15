@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect '/login'
         else
-            erb :"users/new"
+            erb :"users/new.html"
         end
     end
 
