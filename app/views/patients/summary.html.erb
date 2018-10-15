@@ -26,6 +26,8 @@ tr:nth-child(even) {
 <p><%=Time.now.localtime.strftime("%c")%></p>
 <br>
 
+<%=@message if @message%>
+
 <table style="width:20%">
   <tr>
     <th>User</th>

@@ -1,0 +1,47 @@
+<!--MOVE TO CSS FILE-->
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<!--MOVE ABOVE TO CSS FILE-->
+
+<h2>Patient Detail</h1>
+<h3>Current Date and Time:</h3>
+<p><%=Time.now.localtime.strftime("%c")%></p>
+
+<table>
+    <tr>
+        <th>Patient Name</th>
+        <th>Birth Year</th>
+        <th>History</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td><%=@patient.name%></td>
+        <td><%=@patient.birth_year%></td>
+        <td><%=@patient.history%></td>
+        <td>
+            <a href="/patient/<%=@patient.id%>/edit">Edit</a><br>
+            <a href="/patient/<%=@patient.id%>/delete">Delete</a>
+        </td>
+    </tr>
+</table>
+<br>
+<!--CREATE NAV LINKS -->
+<a href="/patients">Back to patient list</a>
+<br>
+<a href="/logout">Logout</a>

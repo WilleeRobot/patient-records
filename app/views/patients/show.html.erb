@@ -21,13 +21,17 @@ tr:nth-child(even) {
 <h2>Welcome, <%=@user.username%>.  Here are a list of your patients</h1>
 <h3>Current Date and Time:</h3>
 <p><%=Time.now.localtime.strftime("%c")%></p>
-<br>
+
+<%=@message if @message%>
+
+<h3><a href="/patients/new">Create a new patient</a></h3>
+
+<h3>Current Patient List</h3>
 
 <table>
   <tr>
     <th>Patient Name</th>
     <th>Birth Year</th>
-    <th>History</th>
     <th>Action</th>
   </tr>
 
@@ -35,14 +39,14 @@ tr:nth-child(even) {
     <tr>
         <td><%=patient.name%></td>
         <td><%=patient.birth_year%></td>
-        <td><%=patient.history%></td>
         <td>
-          <a href="/patient/<%=patient.id%>/edit">Edit</a><br>
-          <a href="/patient/<%=patient.id%>/delete">Delete</a>
+          <a href="/patients/<%=patient.id%>">View</a><br>
+          <a href="/patients/<%=patient.id%>/delete">Delete</a>
         </td>
     </tr>
   <%end%>
 </table>
+<br>
 
 <!--CREATE LINKS TO LOGOUT -->
 <a href="/logout">Logout</a>
