@@ -46,6 +46,25 @@ tr:nth-child(even) {
   <%end%>
 </table>
 <br>
+<h3>Summary List of Clinic Patients by Users</h3>
+
+<table style="width:20%">
+  <tr>
+    <th>User</th>
+    <th>Patient Count</th>
+  </tr>
+
+  <%@all_users.each do |user|%>
+    <tr>
+        <td><%=user.username%></td>
+        <td><%=user.patients.count%></td>
+    </tr>
+  <%end%>
+</table>
+<br>
+<h3>Total patients in clinic: <%=@all_patients.count%></h3>
+
+<br>
 
 <!--CREATE LINKS TO LOGOUT -->
 <a href="/logout">Logout</a>

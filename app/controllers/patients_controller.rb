@@ -4,6 +4,8 @@ class PatientsController < ApplicationController
         if logged_in?
             @user = current_user
             @patients = @user.patients.all
+            @all_patients = Patient.all
+            @all_users = User.all
 
             erb :"/patients/show.html"
         else
