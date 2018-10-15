@@ -1,5 +1,7 @@
 <h1>Login</h1>
 
+<%=@message if @message%>
+
 <form action="/sessions" method="POST">
     
     <!--CREATE USERNAME-->    
@@ -16,3 +18,7 @@
 
     <input type="submit">
 </form>
+<br>
+<a href="/">Back to homepage</a>
+<br>
+<a href="/signup">Click here to create a new login</a>
