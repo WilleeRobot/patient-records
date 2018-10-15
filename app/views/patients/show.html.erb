@@ -22,7 +22,7 @@ tr:nth-child(even) {
 <h3>Current Date and Time:</h3>
 <p><%=Time.now.localtime.strftime("%c")%></p>
 
-<%=@message if @message%>
+<h2><%=@message if @message%></h2>
 
 <h3><a href="/patients/new">Create a new patient</a></h3>
 
