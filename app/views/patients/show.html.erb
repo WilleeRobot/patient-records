@@ -31,14 +31,14 @@ tr:nth-child(even) {
 <table>
   <tr>
     <th>Patient Name</th>
-    <th>Birth Year</th>
+    <th>Patient Age</th>
     <th>Action</th>
   </tr>
 
   <%@patients.each do |patient|%>
     <tr>
         <td><%=patient.name%></td>
-        <td><%=patient.birth_year%></td>
+        <td><%=Time.now.year - patient.birth_year%></td>
         <td>
           <a href="/patients/<%=patient.id%>">View Details</a><br>
         </td>
