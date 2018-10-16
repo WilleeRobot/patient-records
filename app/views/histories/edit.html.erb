@@ -1,0 +1,32 @@
+<h2>Edit Patient History Form</h2>
+
+<%if @user && @user.errors.any?%>
+    <ul>
+        <%@user.errors.full_messages.each do |message|%>
+            <li><%=message%></li>
+        <%end%>
+    </ul>
+<%end%>
+
+<h3>Patient Name: <%=@patient.name%></h3>
+
+<form action="/patients/<%=@patient.id%>/histories/<%=@history.id%>" method="POST" id="patienthistoryform">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <p>
+        <label for="date">Entry Date (YYYY-MM-dd):</label>
+        <input type="text" name="date" id="date">
+    </p>
+    <p>
+        <label for="action">Conclusion:</label>
+        <input type="text" name="action" id="action">
+    </p>
+    <textarea placeholder="Enter patient history here..." rows="4" cols="50" name="notes" form="patienthistoryform"></textarea>
+    <br>
+    <br>
+    <input type="submit">
+</form>
+<br>
+
+<br>
+<a href="/patients/<%=@patient.id%>">Back to patient page</a>
+
