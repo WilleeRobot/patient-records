@@ -1,0 +1,66 @@
+<!--MOVE TO CSS FILE-->
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<!--MOVE ABOVE TO CSS FILE-->
+<div>
+  <h2>Detailed History for <%=@patient.name%></h1>
+  <h3>Current Date and Time:</h3>
+  <p><%=Time.now.localtime.strftime("%c")%></p>
+</div>
+
+<div>
+  <h2><%=@message if @message%></h2>
+</div>
+
+<div>
+  <h3>Record ID: <%=@history.id%></h3>
+  <table>
+    <tr>
+      <th>Date Recorded</th>
+      <th>Conclusion</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+        <td><%=@history.date%></td>
+        <td><%=@history.action%></td>
+        <td>
+          <a href="/patients/<%=@patient.id%>/histories/<%=@history.id%>/edit">Edit Entry</a><br>
+        </td>
+    </tr>
+</table>
+</div>
+
+<div>
+  <h3>Detailed Notes</h3>
+  <p><%=@history.notes%></p>
+</div>
+<div>
+
+<form action="/patients/<%= @patient.id %>/histories/<%=@history.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="DELETE HISTORY RECORD">
+</form>
+
+  <h3><a href="/patients/<%=@patient.id%>/histories/new">Create a new patient history</a></h3>
+  <!--CREATE NAV LINKS -->
+  <!--DELETE BUTTON-->
+
+  <a href="/patients/<%=@patient.id%>">Back to patient details</a>
+  <br>
+  <a href="/logout">Logout</a>
+</div>
