@@ -9,18 +9,21 @@
 <%end%>
 
 <h3>Patient Name: <%=@patient.name%></h3>
-
+<h3>Leave fields blank if no editing is required.</h3>
 <form action="/patients/<%=@patient.id%>/histories/<%=@history.id%>" method="POST" id="patienthistoryform">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <p>
         <label for="date">Entry Date (YYYY-MM-dd):</label>
         <input type="text" name="date" id="date">
+        [<%=@history.date%>]
     </p>
     <p>
         <label for="action">Diagnosis:</label>
         <input type="text" name="action" id="action">
+        [<%=@history.action%>]
     </p>
     <textarea placeholder="Enter patient history here..." rows="4" cols="50" name="notes" form="patienthistoryform"></textarea>
+    [<%=@history.notes%>]
     <br>
     <br>
     <input type="submit">

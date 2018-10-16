@@ -7,28 +7,33 @@
         <%end%>
     </ul>
 <%end%>
-<h3>Currently Editing Details For: <%=@patient.name%></h3>
+<h3>Leave fields blank if no editing is required.</h3>
 <form action="/patients/<%=@patient.id%>/edit" method="POST" id="patientform">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <p>
         <label for="name">Patient Name:</label>
         <input type="text" name="name" id="name">
+         [<%=@patient.name%>]
     </p>
     <p>
         <label for="birth_year">Birth Year:</label>
         <input type="text" name="birth_year" id="birth_year">
+         [<%=@patient.birth_year%>]
     </p>
     <p>
         <label for="address">Address:</label>
         <input type="text" name="address" id="address">
+         [<%=@patient.address%>]       
     </p>
     <p>
         <label for="phone">Phone:</label>
         <input type="text" name="phone" id="phone">
+         [<%=@patient.phone%>]
     </p>
     <p>
         <label for="healthcarenumber">Health Care Number:</label>
         <input type="text" name="healthcarenumber" id="healthcarenumber">
+         [<%=@patient.healthcarenumber%>]
     </p>
     <input type="submit">
 </form>

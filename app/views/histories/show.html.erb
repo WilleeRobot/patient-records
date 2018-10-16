@@ -46,9 +46,16 @@ tr:nth-child(even) {
 </div>
 
 <div>
-  <h3>Detailed Notes</h3>
-  <p><%=@history.notes%></p>
+  <table>
+    <tr>
+      <th>Detailed Notes</th>
+    </tr>
+    <tr>
+      <td><%=@history.notes%></td>
+    </tr>
+  </table>
 </div>
+<br>
 <div>
 
 <form action="/patients/<%= @patient.id %>/histories/<%=@history.id%>/delete" method="post">
