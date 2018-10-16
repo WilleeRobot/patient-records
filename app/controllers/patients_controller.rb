@@ -29,6 +29,8 @@ class PatientsController < ApplicationController
             @patient = current_user.patients.find_by(id: params[:id])
             if @patient
                 @user = current_user
+                @histories = @patient.histories
+
                 erb :"/patients/unique_show.html"
             else
                 redirect "/patients"
@@ -91,6 +93,9 @@ class PatientsController < ApplicationController
 
     delete '/patients/:id/delete' do
         @patient = current_user.patients.find_by(id: params[:id])
+        @patient.histories.each do |history|
+            history.delete
+        end
         @patient.delete
         redirect '/patients'
     end
