@@ -29,7 +29,6 @@ tr:nth-child(even) {
         <th>Phone</th>
         <th>Address</th>
         <th>Health Care Number</th>
-        <th>History</th>
         <th>Action</th>
     </tr>
 
@@ -39,7 +38,30 @@ tr:nth-child(even) {
         <td><%=@patient.phone%></td>
         <td><%=@patient.address%></td>
         <td><%=@patient.healthcarenumber%></td>
-        <td><%=@patient.history%></td>
+        <td>
+            <a href="/patients/<%=@patient.id%>/edit">Edit</a><br>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<h3>Patient History</h3>
+<table>
+    <tr>
+        <th>Record #</th>
+        <th>Date</th>
+        <th>Notes</th>
+        <th>Conclusion</th>
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <%@histories.each do |history|%>
+            <td><%=history.id%></td>
+            <td><%=history.date%></td>
+            <td><%=history.notes%></td>
+            <td><%=history.action%></td>
+        <%end%>
         <td>
             <a href="/patients/<%=@patient.id%>/edit">Edit</a><br>
         </td>
@@ -48,7 +70,7 @@ tr:nth-child(even) {
 <br>
 <br>
 
-
+<!--DELETE BUTTON-->
 <form action="/patients/<%= @patient.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="DELETE PATIENT RECORD">
