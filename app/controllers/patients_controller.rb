@@ -46,7 +46,6 @@ class PatientsController < ApplicationController
         @patient = Patient.new
         @patient.name = params[:name]
         @patient.birth_year = params[:birth_year].to_i
-        @patient.history = params[:history]
         @patient.phone = params[:phone]
         @patient.address = params[:address]
         @patient.healthcarenumber = params[:healthcarenumber]
@@ -82,7 +81,6 @@ class PatientsController < ApplicationController
 
         @patient.name = params[:name] if !params[:name].empty?
         @patient.birth_year = params[:birth_year].to_i if !params[:birth_year].empty?
-        @patient.history = params[:history] if !params[:history].empty?
         @patient.phone = params[:phone] if !params[:phone].empty?
         @patient.address = params[:address] if !params[:address].empty?
         @patient.healthcarenumber = params[:healthcarenumber] if !params[:healthcarenumber].empty?
